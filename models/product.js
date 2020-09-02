@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const productSchema = mongoose.Schema({
 
-    ean : { type: String , required: false },
-    name : { type: String , required: false },
+    ean : { type: String , required: true },
+    name : { type: String , required: true },
     description : { type: String , required: false },
     image : { type: String  , required: false },
     price : { type: Number , required: false },

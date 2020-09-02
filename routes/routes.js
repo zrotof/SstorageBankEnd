@@ -50,24 +50,32 @@ router.get("/product/:name&:ean", async (req, res) => {
 router.post("/add", async (req, res) => {
 
     var product = req.body;
+    var fileName ='';
     //console.log("req.body :", req.body);
    // console.log("req.files.image :", req.files.image);
 
     var image = req.files.image;
-    var fileName = Date.now()+image.name;
-    image.mv('./public/img/'+fileName, function(err){
-        if(err){
-            return res.send(err);
-        }
-    })
 
+    if(!image){
 
+        fileName = './public/img/default.jpg';
+
+    }
+    else{
+    
+        fileName = Date.now()+image.name;
+        image.mv('./public/img/'+fileName, function(err){
+            if(err){
+                return res.send(err);
+            }
+        });
+    }
     await prodService.addProduct({ name: product.name, 
                                     ean: product.ean, 
                                     price: product.price, 
                                     qty: product.qty, 
                                     description: product.description, 
-                                    image: "http://localhost:3000/"+fileName})
+                                    image: "https://sstoragebackend.herokuapp.com/"+fileName})
     .then(data =>{
         res.send(data),
         console.log("ok save");

@@ -12,7 +12,7 @@ app.use((req, res, next) => {
   });
 
 app.use(express.static('./public/img'))
-app.use('/products', require('./routes/routes.js'));
+app.use('https://sstoragebackend.herokuapp.com/products', require('./routes/routes.js'));
 
 
 app.use((req,res) => {
