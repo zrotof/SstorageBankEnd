@@ -12,8 +12,8 @@ class ProductService{
     async listProducts(){
 
       
-      //Product.find()
-       return Product.deleteMany({});
+      //Product.deleteMany({})
+       return Product.find();
 
     };
 
