@@ -64,7 +64,7 @@ router.post("/add", async (req, res) => {
     else{
     
         fileName = Date.now()+image.name;
-        image.mv('./public/img/'+fileName, function(err){
+        image.mv('./public/img'+fileName, function(err){
             if(err){
                 return res.send(err);
             }

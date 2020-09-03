@@ -11,7 +11,7 @@ app.use((req, res, next) => {
     next();
   });
 
-app.use(express.static('./public/img'))
+app.use(express.static('./public/img/'));
 app.use('/products', require('./routes/routes.js'));
 
 
