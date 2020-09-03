@@ -52,19 +52,17 @@ router.post("/add", async (req, res) => {
     var product = req.body;
     var fileName ='';
     //console.log("req.body :", req.body);
-   // console.log("req.files.image :", req.files.image);
+   console.log("req.files.image :", req.files);
 
-    var image = req.files.image;
+    if(req.files === null){
 
-    if(!image){
-
-        fileName = './public/img/default.jpg';
+        fileName = 'default.jpg';
 
     }
     else{
     
-        fileName = Date.now()+image.name;
-        image.mv('./public/img'+fileName, function(err){
+        fileName = Date.now()+(req.files.image.name.split(" ").join(""));
+        image.mv('./public/img/'+fileName, function(err){
             if(err){
                 return res.send(err);
             }
