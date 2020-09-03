@@ -52,7 +52,7 @@ router.post("/add", async (req, res) => {
     var product = req.body;
     var fileName ='';
     //console.log("req.body :", req.body);
-   console.log("req.files.image :", req.files);
+   //console.log("req.files.image :", req.files);
 
     if(req.files === null){
 
@@ -61,7 +61,7 @@ router.post("/add", async (req, res) => {
     }
     else{
     
-        fileName = Date.now()+(req.files.image.name.split(" ").join(""));
+        fileName = Date.now()+(req.files.image.image.name.split(" ").join(""));
         image.mv('./public/img/'+fileName, function(err){
             if(err){
                 return res.send(err);
