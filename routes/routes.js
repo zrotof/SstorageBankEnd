@@ -52,7 +52,7 @@ router.post("/add", async (req, res) => {
     var product = req.body;
     var fileName ='';
     //console.log("req.body :", req.body);
-   //console.log("req.files.image :", req.files);
+   console.log("req.files.image :", req.files.image);
 
     if(req.files === null){
 
