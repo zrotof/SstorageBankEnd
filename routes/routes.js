@@ -30,8 +30,11 @@ router.get("/", async (req, res) => {
 //Route to get product by name and by ean
 router.get("/product/:name&:ean", async (req, res) => {
 
+
     //console.log("get name:");
    // console.log("get body:",req.params.name);
+
+  
 
     await prodService.listProductByNameEan({name: req.params.name, ean: req.params.ean})
     .then(data =>{
@@ -52,7 +55,7 @@ router.post("/add", async (req, res) => {
     var product = req.body;
     var fileName ='';
     console.log("req.body :", req.body);
-   console.log("req.files.image  taille:", req.files.images.length);
+   console.log("req.files.image  taille:", req.files);
 
 
   
