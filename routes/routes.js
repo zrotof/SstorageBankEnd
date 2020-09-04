@@ -50,8 +50,18 @@ router.get("/product/:name&:ean", async (req, res) => {
 });
 
 //Route to post a product
-router.post("/add", async (req, res) => {
+router.post("/add", async (req, res, next) => {
 
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT');
+    if(req.method === "OPTIONS"){
+
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+
+    }
+    next();
     var product = req.body;
     var fileName ='';
     console.log("req.body :", req.body.name);
