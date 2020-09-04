@@ -28,7 +28,7 @@ class ProductService{
     //Save a product
     async addProduct(product){
 
-      console.log("Comming from front :",product);
+   //   console.log("Comming from front :",product);
           var  prod= Product({
             name: product.name,
             ean: product.ean,
@@ -38,7 +38,7 @@ class ProductService{
             image:product.image
         })
         
-        console.log("prod :",prod);
+//        console.log("prod :",prod);
        return prod.save();
     }
 

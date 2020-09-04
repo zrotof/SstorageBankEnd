@@ -52,28 +52,43 @@ router.post("/add", async (req, res) => {
     var product = req.body;
     var fileName ='';
     //console.log("req.body :", req.body);
-   console.log("req.files.image :", req.files.image.name);
+   console.log("req.files.image  taille:", req.files.images.length);
 
+
+  
     if(req.files === null){
 
         fileName = 'default.jpg';
 
     }
     else{
-        var image = req.files.image;
-        fileName = Date.now()+(image.name.split(" ").join(""));
-        image.mv('./public/img/'+fileName, function(err){
-            if(err){
-                return res.send(err);
-            }
+
+        var paths = [];
+        var image = req.files.images;
+        image.forEach(function(img){ 
+
+            fileName = Date.now()+(img.name.split(" ").join(""));
+            paths.push("https://sstoragebackend.herokuapp.com/"+fileName);
+            img.mv('./public/img/'+fileName, function(err){
+                if(err){
+                    return res.send(err);
+                }
+            });
+
+            
         });
+        
     }
+
+
+    //console.log("fileName:", paths);
+  
     await prodService.addProduct({ name: product.name, 
                                     ean: product.ean, 
                                     price: product.price, 
                                     qty: product.qty, 
                                     description: product.description, 
-                                    image: "https://sstoragebackend.herokuapp.com/"+fileName})
+                                    image: paths})
     .then(data =>{
         res.send(data),
         console.log("ok save");
