@@ -54,10 +54,10 @@ router.post("/add", async (req, res) => {
 
     var product = req.body;
     var fileName ='';
-    console.log("req.body :", req.body);
+    console.log("req.body :", req.body.name);
    console.log("req.files.image  taille:", req.files);
 
-
+   var paths = [];
   
     if(req.files === null){
 
@@ -66,7 +66,7 @@ router.post("/add", async (req, res) => {
     }
     else{
 
-        var paths = [];
+        
         var image = req.files.images;
         for(var img in image){ 
 
