@@ -51,7 +51,7 @@ router.post("/add", async (req, res) => {
 
     var product = req.body;
     var fileName ='';
-    //console.log("req.body :", req.body);
+    console.log("req.body :", req.body);
    console.log("req.files.image  taille:", req.files.images.length);
 
 
@@ -69,11 +69,11 @@ router.post("/add", async (req, res) => {
 
             fileName = Date.now()+(img.name.split(" ").join(""));
             paths.push("https://sstoragebackend.herokuapp.com/"+fileName);
-            img.mv('./public/img/'+fileName, function(err){
+          /*  img.mv('./public/img/'+fileName, function(err){
                 if(err){
                     return res.send(err);
                 }
-            });
+            });*/
 
             
         });
@@ -82,7 +82,7 @@ router.post("/add", async (req, res) => {
 
 
     //console.log("fileName:", paths);
-  
+  /*
     await prodService.addProduct({ name: product.name, 
                                     ean: product.ean, 
                                     price: product.price, 
@@ -98,7 +98,7 @@ router.post("/add", async (req, res) => {
             message = err || "Some error occurred while creating the Tutorial."),
           
           console.log("error :",message);
-    });
+    });*/
 
 });
 
