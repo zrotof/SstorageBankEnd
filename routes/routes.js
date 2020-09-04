@@ -58,6 +58,7 @@ router.post("/add", async (req, res) => {
    console.log("req.files.image  taille:", req.files);
 
    var paths = [];
+   var image =[];
   
     if(req.files === null){
 
@@ -67,7 +68,7 @@ router.post("/add", async (req, res) => {
     else{
 
         
-        var image = req.files.images;
+         image = req.files.images;
         for(var img in image){ 
 
             console.log("File img: ",img)
