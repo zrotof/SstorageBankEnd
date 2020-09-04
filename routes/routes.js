@@ -71,7 +71,7 @@ router.post("/add", async (req, res) => {
          image = req.files.images;
         for(var img in image){ 
 
-            console.log("File img: ",img)
+            console.log("File img: ",image)
             fileName = Date.now()+(img.name.split(" ").join(""));
             paths.push("https://sstoragebackend.herokuapp.com/"+fileName);
 
