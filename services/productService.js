@@ -43,7 +43,7 @@ class ProductService{
         })
         
 //        console.log("prod :",prod);
-       return prod.save();
+       return await prod.save();
     }
 
   //Update a product quantity
