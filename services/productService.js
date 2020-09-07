@@ -1,6 +1,10 @@
+// Ce fichier contient les opérations
+
+
+//Appel du modèle
 const Product = require('../models/product');
 
-
+//Appel d'une instance de la base de données
 const db = require('../config/database');
 
 class ProductService{
@@ -8,7 +12,7 @@ class ProductService{
     contructor(){}
 
 
-    //list products
+    //functions qui listent les  produits en BDD
     async listProducts(){
 
       
@@ -18,14 +22,14 @@ class ProductService{
     };
 
 
-    //list product(s) found by Name and EAN code
+    //Renvoit un produit trouvé en BDD avec le nom et le code comme paramètre
     async listProductByNameEan(param){
 
       
       return Product.find({ name: param.name, ean: param.ean });
     }
 
-    //Save a product
+    //Ajout d'un nouveau produit
     async addProduct(product){
 
    //   console.log("Comming from front :",product);

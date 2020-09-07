@@ -1,7 +1,12 @@
+//Appel du framework express
 const express = require('express');
+//Appel du module qui nous permet de définir nos route
 const router = express.Router();
-var multer = require('multer');
+
+//Appel du module express-fileupload qui permet de gérer l'upload de fichiers
 const fileUpload = require('express-fileupload');
+
+//Appel du module body-parser qui permet de gérer les objet de type json 
 var bodyParser =require('body-parser');
 
 const Service = require('../services/productService');
@@ -9,11 +14,14 @@ const Product = require('../models/product');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended:false}))
 
+//Appel du service
 var prodService = new Service();
 
-
 router.use(fileUpload());
-//Route to find all products
+
+
+
+//Endpoint qui renvoit la liste des produits en BDD
 router.get("/", async (req, res) => {
 
     await prodService.listProducts()
@@ -27,7 +35,7 @@ router.get("/", async (req, res) => {
      });;;
 });
 
-//Route to get product by name and by ean
+//Endpoint qui permet d'effectuer une recherche en dans le request un objet qui contient le nom et lean du produit
 router.get("/product/:name&:ean", async (req, res) => {
 
 
@@ -49,19 +57,9 @@ router.get("/product/:name&:ean", async (req, res) => {
     
 });
 
-//Route to post a product
+//Endpoint qui permet d'ajouter un nouveau produit
 router.post("/add", async (req, res, next) => {
 
-
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT');
-    if(req.method === "OPTIONS"){
-
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-
-    }
-    next();
     var product = req.body;
     var fileName ='';
     console.log("req.body :", req.body.name);
@@ -122,7 +120,7 @@ router.post("/add", async (req, res, next) => {
 
 });
 
-//Route to update a product
+//Endpoint qui permet de moqifier la qauntité en stock
 router.put("/modify", async (req, res) => {
     var product = req.body;
     console.log("req.body update :", req.body);

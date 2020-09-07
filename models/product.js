@@ -1,3 +1,5 @@
+
+// Définition du modèle utilisé, il représente un produit avec un nom, le code ean, la description ,le prix, la quantité en stock et les images associées au produit
 const mongoose = require('mongoose');
 
 const productSchema = mongoose.Schema({
