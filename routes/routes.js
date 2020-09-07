@@ -78,7 +78,7 @@ router.post("/add", async (req, res, next) => {
         
          image = req.files.images;
 
-            images.forEach((img) => {
+            image.forEach((img) => {
                 console.log("Image forEach :",img);
 
             console.log("File img: ",img.name);
