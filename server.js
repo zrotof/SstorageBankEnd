@@ -4,7 +4,7 @@
 const http = require('http');
 const app =require('./app');
 
-//On définit le port d'écoute
+//Définition du port d'écoute
 app.set ('port', process.env.PORT || 3000)
 const server = http.createServer(app);
 
