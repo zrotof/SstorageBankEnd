@@ -79,28 +79,28 @@ router.post("/add", async (req, res, next) => {
          image = req.files.images;
 
             images.forEach((img) => {
-                console.log(img);
-            });
+                console.log("Image forEach :",img);
 
             console.log("File img: ",img.name);
             fileName = Date.now()+(img.name.split(" ").join(""));
             paths.push("https://sstoragebackend.herokuapp.com/"+fileName);
 
             
-          /*  img.mv('./public/img/'+fileName, function(err){
+           img.mv('./public/img/'+fileName, function(err){
                 if(err){
                     return res.send(err);
                 }
-            });*/
+            });
 
         
-        }
+            });
+    }
         
     
 
 
     //console.log("fileName:", paths);
-  /*
+  
     await prodService.addProduct({ name: product.name, 
                                     ean: product.ean, 
                                     price: product.price, 
@@ -116,7 +116,7 @@ router.post("/add", async (req, res, next) => {
             message = err || "Some error occurred while creating the Tutorial."),
           
           console.log("error :",message);
-    });*/
+    });
 
 });
 
