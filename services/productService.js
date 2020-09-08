@@ -30,7 +30,7 @@ class ProductService{
     }
 
     //Ajout d'un nouveau produit
-    async addProduct(product){
+     addProduct(product){
 
    //   console.log("Comming from front :",product);
           var  prod= Product({
@@ -43,7 +43,7 @@ class ProductService{
         })
         
 //        console.log("prod :",prod);
-       return await prod.save();
+       return prod.save();
     }
 
   //Update a product quantity
