@@ -68,10 +68,10 @@ router.post("/add", async (req, res, next) => {
    var paths = [];
    var image =[];
   
-    if(req.files === null){
+    if(req.files == null){
 
         fileName = 'default.jpg';
-
+        paths.push("https://sstoragebackend.herokuapp.com/"+fileName);
     }
     else{
 
